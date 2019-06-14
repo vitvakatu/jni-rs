@@ -155,6 +155,9 @@ impl JavaVM {
     /// Detaching a non-attached thread is no-op.
     ///
     /// Calling this method is an equivalent for calling `drop()` for `AttachGuard`.
+    ///
+    /// This method is marked as hidden, because it invalidates existing `AttachGuard`s when called.
+    #[doc(hidden)]
     pub fn detach_current_thread(&self) {
         InternalAttachGuard::clear_tls();
     }
